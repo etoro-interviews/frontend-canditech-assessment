@@ -26,17 +26,20 @@ import { useToast } from "@/components/ui/Toast";
 import { api, errorCode, errorKey } from "@/lib/api/client";
 import { midpoint, nextAppendPosition } from "@/lib/api/position";
 import type { BoardPage, CardSummary, ListWithCards } from "@/lib/api/types";
+import { CardCommentsDrawer } from "@/components/card/CardCommentsDrawer";
 
 function SortableCard({
   card,
   onRename,
   onArchive,
+  onOpenComments,
   archiveLabel,
   dragLabel,
 }: {
   card: CardSummary;
   onRename: (title: string) => Promise<void>;
   onArchive: () => void;
+  onOpenComments: () => void;
   archiveLabel: string;
   dragLabel: string;
 }) {
@@ -68,6 +71,15 @@ function SortableCard({
           inputClassName="text-sm"
           onSave={onRename}
         />
+        <button
+          type="button"
+          onClick={onOpenComments}
+          className="mt-1 text-[10px] text-[var(--accent)]"
+        >
+          {card.commentCount > 0
+            ? `${card.commentCount} comments`
+            : "Add comment"}
+        </button>
       </div>
       <button
         type="button"
@@ -84,9 +96,11 @@ function SortableCard({
 export function BoardShell({
   workspaceSlug,
   initial,
+  currentUserId,
 }: {
   workspaceSlug: string;
   initial: BoardPage;
+  currentUserId: string;
 }) {
   const t = useTranslations("cards");
   const tl = useTranslations("lists");
@@ -99,6 +113,7 @@ export function BoardShell({
   const [listName, setListName] = useState("");
   const [cardDrafts, setCardDrafts] = useState<Record<string, string>>({});
   const [pending, setPending] = useState(false);
+  const [activeCard, setActiveCard] = useState<CardSummary | null>(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
@@ -427,6 +442,7 @@ export function BoardShell({
                         dragLabel={ta("drag")}
                         onRename={(title) => onRenameCard(card.id, title)}
                         onArchive={() => void onArchiveCard(card.id, list.id)}
+                        onOpenComments={() => setActiveCard(card)}
                       />
                     ))}
                   </ul>
@@ -467,6 +483,15 @@ export function BoardShell({
           </div>
         </DndContext>
       )}
+
+      {activeCard ? (
+        <CardCommentsDrawer
+          cardId={activeCard.id}
+          cardTitle={activeCard.title}
+          currentUserId={currentUserId}
+          onClose={() => setActiveCard(null)}
+        />
+      ) : null}
     </div>
   );
 }

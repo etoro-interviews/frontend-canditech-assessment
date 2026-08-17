@@ -105,6 +105,13 @@ export async function POST(
       .single();
     if (error || !data) throw badRequest(error?.message ?? "Create failed");
 
+    // Seed a starter kanban so new boards are immediately usable.
+    await supabase.from("lists").insert([
+      { board_id: data.id, name: "To Do", position: 1000 },
+      { board_id: data.id, name: "Doing", position: 2000 },
+      { board_id: data.id, name: "Done", position: 3000 },
+    ]);
+
     return created({ board: mapBoard(data) });
   } catch (error) {
     return fromError(error);

@@ -74,3 +74,12 @@ export type BoardPage = {
 export type TransferOwnershipRequest = {
   userId: string;
 };
+
+export type CardComment = {
+  id: string;
+  cardId: string;
+  authorId: string;
+  body: string;
+  createdAt: string;
+  author?: Pick<Profile, "id" | "email" | "name">;
+};

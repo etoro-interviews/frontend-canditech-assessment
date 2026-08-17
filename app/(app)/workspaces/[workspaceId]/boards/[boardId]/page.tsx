@@ -87,5 +87,11 @@ export default async function BoardPageView({
     members: [],
   };
 
-  return <BoardShell workspaceSlug={workspace.slug} initial={boardPage} />;
+  return (
+    <BoardShell
+      workspaceSlug={workspace.slug}
+      initial={boardPage}
+      currentUserId={user.id}
+    />
+  );
 }
