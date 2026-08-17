@@ -1,0 +1,39 @@
+# env files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+*.log
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# cursor / specify local
+.cursor/*
+!.cursor/skills/
+.agents/
+skills-lock.json

@@ -1,0 +1,116 @@
+{
+  "common": {
+    "appName": "Task Boards",
+    "save": "Save",
+    "cancel": "Cancel",
+    "back": "Back",
+    "delete": "Delete",
+    "rename": "Rename",
+    "archive": "Archive",
+    "confirmArchive": "Archive this item? It will disappear from the board.",
+    "confirmDelete": "Delete permanently? This cannot be undone.",
+    "loading": "Loading…",
+    "signOut": "Sign out"
+  },
+  "auth": {
+    "signInTitle": "Sign in",
+    "signUpTitle": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "noAccount": "Need an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "workspaces": {
+    "title": "Workspaces",
+    "create": "Create workspace",
+    "namePlaceholder": "Workspace name",
+    "open": "Open",
+    "backToList": "Back to workspaces",
+    "members": "Members",
+    "settings": "Settings",
+    "settingsPending": "Members, invites, leave, and ownership transfer come next.",
+    "backToWorkspace": "Back to workspace",
+    "rename": "Rename workspace",
+    "leave": "Leave workspace",
+    "transfer": "Transfer ownership",
+    "delete": "Delete workspace",
+    "confirmDelete": "Delete this workspace and all of its boards? This cannot be undone.",
+    "ownerOnly": "Only the workspace owner can change these settings.",
+    "saved": "Workspace updated"
+  },
+  "boards": {
+    "title": "Boards",
+    "create": "Create board",
+    "namePlaceholder": "Board name",
+    "rename": "Rename board",
+    "archive": "Archive board",
+    "confirmArchive": "Archive this board? It will disappear from the workspace.",
+    "backToWorkspace": "Back to workspace",
+    "emptyTitle": "No boards yet",
+    "emptyBody": "Create a board to start organizing work.",
+    "emptyCta": "Create board"
+  },
+  "lists": {
+    "add": "Add list",
+    "namePlaceholder": "List name",
+    "rename": "Rename list",
+    "archive": "Archive list",
+    "confirmArchive": "Archive this list and its cards?"
+  },
+  "cards": {
+    "add": "Add card",
+    "titlePlaceholder": "Card title",
+    "description": "Description",
+    "dueDate": "Due date",
+    "rename": "Rename card",
+    "archive": "Archive card",
+    "confirmArchive": "Archive this card?",
+    "assignees": "Assignees",
+    "emptyBoardTitle": "This board is empty",
+    "emptyBoardBody": "Add a list to start creating cards.",
+    "emptyBoardCta": "Add list"
+  },
+  "labels": {
+    "title": "Labels",
+    "add": "Add label"
+  },
+  "checklist": {
+    "title": "Checklist",
+    "add": "Add item",
+    "progress": "{done}/{total}"
+  },
+  "comments": {
+    "title": "Comments",
+    "add": "Add comment",
+    "placeholder": "Write a comment…",
+    "delete": "Delete comment"
+  },
+  "invites": {
+    "create": "Create invite link",
+    "copy": "Copy link",
+    "accept": "Join workspace",
+    "peekTitle": "Workspace invite"
+  },
+  "empty": {
+    "workspacesTitle": "No workspaces yet",
+    "workspacesBody": "Create a workspace for your team.",
+    "workspacesCta": "Create workspace"
+  },
+  "errors": {
+    "unauthorized": "Please sign in to continue.",
+    "forbidden": "You do not have permission to do that.",
+    "not_found": "We could not find that.",
+    "validation_error": "Please check your input.",
+    "conflict": "That action conflicts with the current state.",
+    "bad_request": "Something went wrong. Try again.",
+    "generic": "Something went wrong."
+  },
+  "a11y": {
+    "close": "Close",
+    "menu": "Menu",
+    "drag": "Drag to reorder"
+  }
+}
