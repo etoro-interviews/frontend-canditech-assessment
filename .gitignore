@@ -37,3 +37,6 @@ next-env.d.ts
 !.cursor/skills/
 .agents/
 skills-lock.json
+
+# Private assessment materials (not for candidates)
+.assessment/

@@ -60,22 +60,34 @@ export async function GET(
     if (error) throw badRequest(error.message);
     if (!board) throw notFound();
 
-    const listsWithCards: ListWithCards[] = (board.lists ?? []).map((list) => ({
-      id: list.id,
-      name: list.name,
-      position: Number(list.position),
-      cards: (list.cards ?? []).map((c) => ({
-        id: c.id,
-        listId: c.list_id,
-        title: c.title,
-        position: Number(c.position),
-        dueAt: c.due_at,
-        labelIds: [],
-        assigneeIds: [],
-        checklist: { done: 0, total: 0 },
-        commentCount: 0,
-      })),
-    }));
+    const listsWithCards: ListWithCards[] = [];
+    for (const list of board.lists ?? []) {
+      const cards = [];
+      for (const c of list.cards ?? []) {
+        // Count comments per card for the card-face badge.
+        const { count } = await supabase
+          .from("comments")
+          .select("*", { count: "exact", head: true })
+          .eq("card_id", c.id);
+        cards.push({
+          id: c.id,
+          listId: c.list_id,
+          title: c.title,
+          position: Number(c.position),
+          dueAt: c.due_at,
+          labelIds: [],
+          assigneeIds: [],
+          checklist: { done: 0, total: 0 },
+          commentCount: count ?? 0,
+        });
+      }
+      listsWithCards.push({
+        id: list.id,
+        name: list.name,
+        position: Number(list.position),
+        cards,
+      });
+    }
 
     const boardPage: BoardPage = {
       board: {
